@@ -1,11 +1,14 @@
-#pragma once
-#include "Gate.h"
+#ifndef _WIRE_H_
+#define _WIRE_H_
 
 class Wire {
-    Gate* source;
-    Gate* target;
-
 public:
-    Wire(Gate* s, Gate* t) : source(s), target(t) {}
-    void transmitSignal();
+    Wire();
+    bool getSignal() const;  // Get the current signal on the wire
+    void setSignal(bool signal);  // Set the signal on the wire
+
+private:
+    bool currentSignal;  // Represents the current signal on the wire (0 or 1)
 };
+
+#endif // _WIRE_H_
