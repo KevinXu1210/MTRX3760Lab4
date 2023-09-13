@@ -20,4 +20,8 @@ void Circuit::connectWireToGate(Wire* wire, Gate* gate, int inputIndex) {
 
 void Circuit::evaluate() {
     // In this simple example, we assume a topological order of gates.
-    // In a more advanced
+    // In a more advanced scenario, you'd need a mechanism to determine the correct evaluation order.
+    for (const auto& gate : gates) {
+        gate->compute();
+    }
+}
