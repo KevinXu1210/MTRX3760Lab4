@@ -4,13 +4,11 @@
 #include <fstream>
 
 int main(int argc, char* argv[]) {
-    // Check for correct command line arguments
     if (argc != 2) {
         std::cerr << "Usage: " << argv[0] << " <circuit_description_file>" << std::endl;
         return 1;
     }
 
-    // Open the circuit description file
     std::ifstream inputFile(argv[1]);
     if (!inputFile.is_open()) {
         std::cerr << "Error opening file: " << argv[1] << std::endl;
@@ -18,19 +16,18 @@ int main(int argc, char* argv[]) {
     }
 
     try {
-        // Use CircuitBuilder to construct the Circuit from the file
         CircuitBuilder builder;
-        Circuit* circuit = builder.buildCircuit(inputFile);
+        auto circuit = builder.BuildFromStream(inputFile);
 
-        // Simulate the circuit (for this example, we'll just call a simulate function)
-        // You can expand this to allow user-defined inputs or other functionality
-        circuit->simulate();
+        circuit->Evaluate();
 
-        // Display the results (or do any other post-simulation tasks)
-        circuit->displayResults();
+        for (const auto& gate : circuit->Gates()) {
+            std::cout << "Gate " << gate->Name() << " output: " << gate->Output() << std::endl;
+        }
 
-        // Clean up
-        delete circuit;
+        for (const auto& wire : circuit->Wires()) {
+            std::cout << "Wire " << wire->Name() << " value: " << wire->Value() << std::endl;
+        }
 
     } catch (const std::exception& e) {
         std::cerr << "Error: " << e.what() << std::endl;

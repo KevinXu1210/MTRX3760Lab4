@@ -1,11 +1,15 @@
 #include "Wire.h"
 
-Wire::Wire() : currentSignal(false) {}  // By default, the wire signal is initialized to 0 (false)
+Wire::Wire(const std::string& wire_name) : name(wire_name) {}
 
-bool Wire::getSignal() const {
-    return currentSignal;
+bool Wire::Value() const {
+    return value;
 }
 
-void Wire::setSignal(bool signal) {
-    currentSignal = signal;
+void Wire::Assign(bool val) {
+    value = val;
+}
+
+std::string Wire::Name() const {
+    return name;
 }

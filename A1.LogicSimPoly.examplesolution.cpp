@@ -22,7 +22,7 @@
 #include <iostream>
 
 //--Consts and enums-----------------------------------------------------------
-const int MaxInputsPerComponent = 10;         
+const int MaxInputsPerComponent = 10;         // maximum inputs per component
 const int MaxOutputsPerComponent = 10;         
 const int MaxFanout = 10;                     // maximum fanout: max inputs that one output can drive
 
