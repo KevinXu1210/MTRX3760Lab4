@@ -1,4 +1,4 @@
-// This file contains the implementation of the CircuitBuilder class.
+// This .cpp file contains the implementation of the CircuitBuilder class.
 
 
 #include "CircuitBuilder.h"
@@ -118,8 +118,7 @@ void CircuitBuilder::ProcessConnect(std::istream& input)
 
 	// Get the gate and wire from the gateLookup and wireLookup maps
 	Gate* fromGate = gateLookup[fromName];
-
-	Wire* toWire = wireLookup[toName];
+	Wire* toWire   = wireLookup[toName];
 
 	// Connect the gate and wire
 	fromGate->OutputWire(toWire);

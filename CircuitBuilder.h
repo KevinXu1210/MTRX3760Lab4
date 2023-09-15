@@ -1,4 +1,4 @@
-// This file contains the CircuitBuilder class, which is used 
+// This .h file contains the CircuitBuilder class, which is used 
 // to build a circuit from a stream.
 // It takes a file stream as input and returns 
 // a unique pointer to a Circuit object.
