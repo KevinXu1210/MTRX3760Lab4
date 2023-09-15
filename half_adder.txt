@@ -1,0 +1,19 @@
+# Half Adder Circuit Description
+
+component XOR XOR1
+component AND AND1
+
+wire XOR1 0 A
+wire XOR1 1 B
+wire AND1 0 A
+wire AND1 1 B
+
+connect XOR1 SUM 0
+connect AND1 CARRY 0
+
+testerOutput SUM
+testerOutput CARRY
+testerInput A
+testerInput B
+
+end

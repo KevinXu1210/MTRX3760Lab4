@@ -1,0 +1,29 @@
+# Full Adder Circuit Description
+
+component XOR XOR1
+component XOR XOR2
+component AND AND1
+component AND AND2
+component OR OR1
+
+wire XOR1 0 A
+wire XOR1 1 B
+wire AND1 0 A
+wire AND1 1 B
+wire XOR2 0 CIN
+wire XOR2 1 XOR1
+wire AND2 0 CIN
+wire AND2 1 XOR1
+wire OR1 0 AND1
+wire OR1 1 AND2
+
+connect XOR2 SUM 0
+connect OR1 COUT 0
+
+testerOutput SUM
+testerOutput COUT
+testerInput A
+testerInput B
+testerInput CIN
+
+end
