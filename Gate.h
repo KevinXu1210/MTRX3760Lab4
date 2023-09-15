@@ -1,34 +1,53 @@
-// Purpose: header file for Gate.cpp
-// 
-
 #ifndef _GATE_H_
 #define _GATE_H_
 
-// Abstract base class for all logic gates
-class LogicGate {
+#include "Wire.h"
+#include <memory>
+#include <vector>
+
+class Gate {
 public:
-    virtual ~LogicGate() = default;  // Virtual destructor to allow derived classes to be deleted properly
-    virtual bool compute(bool input1, bool input2) = 0; // Compute method to be overridden by derived classes
+    Gate(std::string name);
+    virtual ~Gate() = default;
+    virtual void Compute() = 0;
+
+    void OutputWire(Wire* wire);
+    void InputWire(Wire* wire, int index);
+
+    std::string Name() const;
+    bool Output() const;
+
+    static std::unique_ptr<Gate> Create(const std::string& type, const std::string& name);
+
+protected:
+    std::string name;
+    bool output;
+    std::vector<Wire*> inputWires;
+    Wire* outputWire;
 };
 
-class ANDGate : public LogicGate {
+class ANDGate : public Gate {
 public:
-    bool compute(bool input1, bool input2) override;
+    ANDGate(std::string name);
+    void Compute() override;
 };
 
-class ORGate : public LogicGate {
+class ORGate : public Gate {
 public:
-    bool compute(bool input1, bool input2) override;
+    ORGate(std::string name);
+    void Compute() override;
 };
 
-class XORGate : public LogicGate {
+class XORGate : public Gate {
 public:
-    bool compute(bool input1, bool input2) override;
+    XORGate(std::string name);
+    void Compute() override;
 };
 
-class NORGate : public LogicGate {
+class NOTGate : public Gate {
 public:
-    bool compute(bool input1, bool input2) override;
+    NOTGate(std::string name);
+    void Compute() override;
 };
 
 #endif // _GATE_H_
